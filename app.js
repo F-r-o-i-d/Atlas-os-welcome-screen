@@ -48,7 +48,5 @@ app.on('ready', () => {
   // Shut down app when window closes
   mainWindow.on('closed', () => app.quit()); 
 
-  const mainMenu = Menu.buildFromTemplate(menuBar);
-  Menu.setApplicationMenu(mainMenu);
 
 });

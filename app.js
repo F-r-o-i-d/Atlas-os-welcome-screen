@@ -2,9 +2,6 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 const os = require('os');
-// Components
-const menuBar = require('./src/MenuBar');
-
 const { app, BrowserWindow, Menu, ipcMain } = electron;
 
 let mainWindow;
@@ -21,7 +18,7 @@ app.on('ready', () => {
     fullscreen: true,
     
     webPreferences: { nodeIntegration: true,
-      alwaysOnTop: true,
+      // alwaysOnTop: true,
       contextIsolation: false,
       nativeWindowOpen: true,
       enableRemoteModule: true,
@@ -36,9 +33,9 @@ app.on('ready', () => {
   if (os.platform() != 'win32') {
     mainWindow.webContents.openDevTools();
   }
-  mainWindow.setAlwaysOnTop(true, "floating");
-  mainWindow.setVisibleOnAllWorkspaces(true);
-  mainWindow.setFullScreenable(false);
+  // mainWindow.setAlwaysOnTop(true, "floating");
+  // mainWindow.setVisibleOnAllWorkspaces(true);
+  // mainWindow.setFullScreenable(false);
 
   mainWindow.loadURL(url.format({
     // All this is doing is passing in to file://your_directory/src/index.html
@@ -53,6 +50,5 @@ app.on('ready', () => {
 
   const mainMenu = Menu.buildFromTemplate(menuBar);
   Menu.setApplicationMenu(mainMenu);
-  mainWindow.webContents.openDevTools();
 
 });
